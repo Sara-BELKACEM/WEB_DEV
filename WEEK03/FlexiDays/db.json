@@ -1,0 +1,229 @@
+{
+  "demandes": [
+    {
+      "id": "1",
+      "status": "pending"
+    },
+    {
+      "id": "2",
+      "status": "approved"
+    },
+    {
+      "id": "3",
+      "status": "refused"
+    }
+  ],
+  "solde": [
+    {
+      "id": "1",
+      "paid": 25,
+      "sick": 8,
+      "rtt": 5
+    }
+  ],
+  "notifications": [
+    {
+      "id": "1",
+      "title": "Fermeture exceptionnelle",
+      "message": "L’entreprise sera fermée le 15 août.",
+      "date": "Aujourd’hui"
+    }
+  ],
+  "upcoming": [
+    {
+      "id": "1",
+      "title": "Congés d’été",
+      "dates": "15 - 30 juillet 2025"
+    },
+    {
+      "id": "2",
+      "title": "Pont de mai",
+      "dates": "1 - 2 mai 2025"
+    }
+  ],
+  "conges": [
+    {
+      "id": "1",
+      "employee": "Sara El Amrani",
+      "departement": "RH",
+      "type": "Congé payé",
+      "reason": "Vacances d'été en famille",
+      "start": "2025-07-15",
+      "end": "2025-07-20",
+      "days": 5,
+      "status": "approved",
+      "viewType": "user"
+    },
+    {
+      "id": "2",
+      "employee": "Sara El Amrani",
+      "departement": "RH",
+      "type": "Congé payé",
+      "reason": "Long week-end prolongé",
+      "start": "2025-09-10",
+      "end": "2025-09-12",
+      "days": 3,
+      "status": "approved",
+      "viewType": "user",
+      "processedBy": "Admin"
+    },
+    {
+      "id": "3",
+      "employee": "Sara El Amrani",
+      "departement": "RH",
+      "type": "Congé personnel",
+      "reason": "Déménagement",
+      "start": "2025-05-02",
+      "end": "2025-05-03",
+      "days": 2,
+      "status": "refused",
+      "viewType": "user"
+    },
+    {
+      "id": "4",
+      "employee": "Sara El Amrani",
+      "departement": "RH",
+      "type": "Congé payé",
+      "reason": "Fêtes de fin d'année",
+      "start": "2025-12-23",
+      "end": "2026-01-02",
+      "days": 8,
+      "status": "approved",
+      "viewType": "user",
+      "processedBy": "Admin"
+    },
+    {
+      "id": "7",
+      "employee": "Sara El Amrani",
+      "departement": "RH",
+      "type": "Congé personnel",
+      "reason": "Déménagement",
+      "start": "2025-05-02",
+      "end": "2025-05-03",
+      "days": 2,
+      "status": "approved",
+      "viewType": "admin",
+      "processedBy": "Admin"
+    },
+    {
+      "id": "9",
+      "employee": "Youssef Bakkali",
+      "departement": "Informatique",
+      "type": "Congé maladie",
+      "reason": "Repos médical",
+      "start": "2025-09-10",
+      "end": "2025-09-14",
+      "days": 4,
+      "status": "Approuvé",
+      "viewType": "admin"
+    },
+    {
+      "id": "10",
+      "employee": "Imane Chafai",
+      "departement": "Finance",
+      "type": "Congé exceptionnel",
+      "reason": "Mariage",
+      "start": "2025-09-20",
+      "end": "2025-09-22",
+      "days": 2,
+      "status": "Refusé",
+      "viewType": "admin"
+    },
+    {
+      "id": "11",
+      "employee": "Karim El Idrissi",
+      "departement": "RH",
+      "type": "Congé payé",
+      "reason": "Voyage à l'étranger",
+      "start": "2025-12-01",
+      "end": "2025-12-10",
+      "days": 9,
+      "status": "En attente",
+      "viewType": "admin"
+    },
+    {
+      "id": "12",
+      "employee": "Amina Lahlou",
+      "departement": "Marketing",
+      "type": "Congé maternité",
+      "reason": "Naissance",
+      "start": "2025-11-01",
+      "end": "2026-02-01",
+      "days": 90,
+      "status": "Approuvé",
+      "viewType": "admin"
+    },
+    {
+      "id": "13",
+      "employee": "Hicham Outmani",
+      "departement": "Commercial",
+      "type": "Congé payé",
+      "reason": "Voyage",
+      "start": "2025-10-05",
+      "end": "2025-10-15",
+      "days": 10,
+      "status": "Refusé",
+      "viewType": "admin"
+    },
+    {
+      "id": "14",
+      "employee": "Nadia Bennani",
+      "departement": "RH",
+      "type": "Congé exceptionnel",
+      "reason": "Examen universitaire",
+      "start": "2025-09-28",
+      "end": "2025-09-30",
+      "days": 2,
+      "status": "En attente",
+      "viewType": "admin"
+    },
+    {
+      "id": "15",
+      "employee": "Mohamed Kabbaj",
+      "departement": "Finance",
+      "type": "Congé maladie",
+      "reason": "Chirurgie mineure",
+      "start": "2025-09-18",
+      "end": "2025-09-25",
+      "days": 7,
+      "status": "En attente",
+      "viewType": "admin"
+    },
+    {
+      "id": "16",
+      "employee": "Salma Idrissi",
+      "departement": "Informatique",
+      "type": "Congé payé",
+      "reason": "Voyage en famille",
+      "start": "2025-12-20",
+      "end": "2026-01-05",
+      "days": 15,
+      "status": "En attente",
+      "viewType": "admin"
+    },
+    {
+      "id": "17",
+      "employee": "Omar Fakir",
+      "departement": "Commercial",
+      "type": "Congé exceptionnel",
+      "reason": "Déménagement",
+      "start": "2025-09-14",
+      "end": "2025-09-16",
+      "days": 2,
+      "status": "Approuvé",
+      "viewType": "admin"
+    },
+    {
+      "start": "2025-09-30",
+      "end": "2025-10-03",
+      "days": 4,
+      "type": "Congés personnels",
+      "status": "approved",
+      "reason": "llllllllllllllllllllllll",
+      "employee": "Sara El Amrani",
+      "departement": "RH",
+      "id": "3659",
+      "processedBy": "Admin"
+    }
+  ]
+}

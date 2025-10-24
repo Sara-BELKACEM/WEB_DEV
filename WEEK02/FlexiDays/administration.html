@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlexiDays - Administration</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-slideDown { animation: slideDown 0.25s ease-out; }
+  </style>
+</head>
+<body class="bg-blue-50 font-sans flex flex-col min-h-screen">
+
+  <!-- Header/Nav -->
+  <header class="fixed w-full z-10 px-4 py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center bg-white shadow-lg rounded-xl px-6 py-3 md:py-2 backdrop-blur-md">
+      <!-- Logo -->
+      <div class="flex items-center space-x-3">
+        <i data-lucide="calendar" class="w-6 h-6 text-blue-600"></i>
+        <span class="text-xl font-bold text-blue-700">FlexiDays</span>
+      </div>
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex px-6 py-2 space-x-4">
+        <a href="index.html" class="px-3 py-2 rounded-md text-gray-700 hover:bg-blue-100 hover:text-blue-700">Dashboard</a>
+        <a href="mesConges.html" class="px-3 py-2 rounded-md text-gray-700 hover:bg-blue-100 hover:text-blue-700">Mes congés</a>
+        <a href="demandeDeCongé.html" class="px-3 py-2 rounded-md text-gray-700 hover:bg-blue-100 hover:text-blue-700">Nouvelle demande</a>
+        <a href="administration.html" class="px-3 py-2 rounded-md bg-blue-100 text-blue-700 font-semibold">Administration</a>
+      </nav>
+      <!-- Profile -->
+      <div class="hidden md:flex items-center relative">
+        <img id="profile-btn" src="https://api.dicebear.com/9.x/bottts/svg?seed=FlexiDays" 
+             alt="Profile" class="w-10 h-10 rounded-full border-2 border-blue-500 shadow-md cursor-pointer hover:scale-105 transition">
+        <div id="profile-menu" class="hidden absolute right-0 mt-12 w-48 bg-white rounded-xl shadow-lg border border-gray-200 py-2 z-20">
+          <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Mon profil</a>
+          <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Paramètres</a>
+          <div class="border-t my-1"></div>
+          <a href="#" class="block px-4 py-2 text-red-500 hover:bg-red-50">Déconnexion</a>
+        </div>
+      </div>
+      <!-- Mobile Nav + Profile -->
+      <div class="md:hidden flex items-center space-x-3">
+        <button id="menu-btn" class="text-gray-700 text-2xl"><i data-lucide="menu"></i></button>
+        <img id="profile-btn-mobile" src="https://api.dicebear.com/9.x/bottts/svg?seed=FlexiDays" 
+             class="w-9 h-9 rounded-full border border-blue-500 shadow-md cursor-pointer">
+        <div id="profile-menu-mobile" class="hidden absolute top-16 right-4 w-40 bg-white rounded-xl shadow-lg border border-gray-200 py-2 z-20">
+          <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Mon profil</a>
+          <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Paramètres</a>
+          <div class="border-t my-1"></div>
+          <a href="#" class="block px-4 py-2 text-red-500 hover:bg-red-50">Déconnexion</a>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div id="menu" class="hidden md:hidden bg-gray-50 border-t border-gray-200 mt-2 rounded-xl shadow-lg">
+      <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-500 hover:text-white">Dashboard</a>
+      <a href="mesConges.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-500 hover:text-white">Mes congés</a>
+      <a href="demandeDeCongé.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-500 hover:text-white">Nouvelle demande</a>
+      <a href="administration.html" class="block px-4 py-2 text-gray-700 bg-blue-500 text-white">Administration</a>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="flex-grow pt-24 max-w-7xl mx-auto px-4">
+
+    <!-- Title -->
+    <div class="text-center my-8">
+      <h1 class="text-4xl font-bold text-blue-600">Administration</h1>
+      <p class="text-gray-600">Gérez les demandes de congés de votre équipe</p>
+    </div>
+
+    <!-- Stat cards -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+      <div class="bg-white p-6 rounded-xl shadow-lg flex items-center space-x-4">
+        <i data-lucide="clock" class="w-8 h-8 text-yellow-500"></i>
+        <div>
+          <h3 class="font-bold text-lg">En attente</h3>
+          <p class="text-yellow-500 text-2xl font-bold">2</p>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-lg flex items-center space-x-4">
+        <i data-lucide="check-circle" class="w-8 h-8 text-green-500"></i>
+        <div>
+          <h3 class="font-bold text-lg">Approuvées</h3>
+          <p class="text-green-500 text-2xl font-bold">8</p>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-lg flex items-center space-x-4">
+        <i data-lucide="x-circle" class="w-8 h-8 text-red-500"></i>
+        <div>
+          <h3 class="font-bold text-lg">Refusées</h3>
+          <p class="text-red-500 text-2xl font-bold">0</p>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-lg flex items-center space-x-4">
+        <i data-lucide="calendar-days" class="w-8 h-8 text-blue-500"></i>
+        <div>
+          <h3 class="font-bold text-lg">Total jours</h3>
+          <p class="text-blue-500 text-2xl font-bold">45</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filters card -->
+    <div class="bg-white p-6 rounded-xl shadow-lg mb-10">
+      <h3 class="font-bold text-lg mb-4 flex items-center space-x-2">
+        <i data-lucide="filter" class="w-5 h-5 text-blue-600"></i>
+        <span>Filtres</span>
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <input type="text" placeholder="Rechercher par nom" class="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400">
+        <select class="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400">
+          <option>Statut</option>
+          <option>En attente</option>
+          <option>Approuvé</option>
+          <option>Refusé</option>
+        </select>
+        <select class="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400">
+          <option>Département</option>
+          <option>Informatique</option>
+          <option>Marketing</option>
+          <option>RH</option>
+        </select>
+        <button class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 flex items-center justify-center space-x-2">
+          <i data-lucide="download" class="w-4 h-4"></i>
+          <span>Exporter</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Congés list with Motif, Type, Durée, Période + buttons -->
+<div class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+
+<!-- Example of a card -->
+<div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition relative flex flex-col ">
+  <!-- Status tag top-right -->
+  <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-yellow-100 text-yellow-600 font-semibold">En attente</span>
+
+  <!-- Card content -->
+  <div>
+    <h3 class="font-bold text-lg">Sophie Martin</h3>
+    <p class="text-gray-600">Congés d’été — 15 au 30 juillet 2025</p>
+    <div class="mt-2 space-y-1 text-gray-700">
+      <p><strong>Motif :</strong> Vacances annuelles</p>
+      <p><strong>Type :</strong> Congés payés</p>
+      <p><strong>Durée :</strong> 15 jours</p>
+      <p><strong>Période :</strong> 15 - 30 juillet 2025</p>
+    </div>
+  </div>
+
+  <!-- Buttons bottom-right -->
+  <div class="mt-4 flex justify-end space-x-3">
+    <button class="px-3 py-1 bg-green-500 text-white rounded-lg hover:bg-green-600">Approuver</button>
+    <button class="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600">Refuser</button>
+  </div>
+</div>
+
+      <!-- Card 2 -->
+<div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition relative flex flex-col">
+  <!-- Status top-right -->
+  <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-yellow-100 text-yellow-600 font-semibold">En attente</span>
+
+  <!-- Content -->
+  <h3 class="font-bold text-lg">Alexandre Roux</h3>
+  <p class="text-gray-600">RTT — 2 mai 2025</p>
+  <div class="mt-2 space-y-1 text-gray-700">
+    <p><strong>Motif :</strong> Maladie</p>
+    <p><strong>Type :</strong> Congé maladie</p>
+    <p><strong>Durée :</strong> 3 jours</p>
+    <p><strong>Période :</strong> 2 - 5 mai 2025</p>
+  </div>
+
+  <!-- Buttons bottom-right -->
+  <div class="mt-4 flex justify-end space-x-3">
+    <button class="px-3 py-1 bg-green-500 text-white rounded-lg hover:bg-green-600">Approuver</button>
+    <button class="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600">Refuser</button>
+  </div>
+</div>
+
+
+      <!-- Card 3 -->
+<div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition relative flex flex-col ">
+  <!-- Status top-right -->
+  <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-red-100 text-red-600 font-semibold">Refusé</span>
+
+  <!-- Content -->
+  <h3 class="font-bold text-lg">Claire Dubois</h3>
+  <p class="text-gray-600">Congé maladie — 12 au 15 avril 2025</p>
+  <div class="mt-2 space-y-1 text-gray-700">
+    <p><strong>Motif :</strong> Voyage familial</p>
+    <p><strong>Type :</strong> Congés sans solde</p>
+    <p><strong>Durée :</strong> 7 jours</p>
+    <p><strong>Période :</strong> 10 - 16 avril 2025</p>
+  </div>
+
+  <!-- Buttons bottom-right -->
+  <div class="mt-4 flex justify-end space-x-3">
+    <button class="px-3 py-1 bg-green-500 text-white rounded-lg hover:bg-green-600">Approuver</button>
+    <button class="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600">Refuser</button>
+  </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="bg-white p-6 rounded-xl shadow-lg relative flex flex-col">
+    <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-green-100 text-green-600 font-semibold">Approuvé</span>
+    <h3 class="font-bold text-lg">Sara Belkacem</h3>
+    <p class="text-gray-600">Congé payé — 15 au 20 mai 2025</p>
+    <div class="mt-2 space-y-1 text-gray-700">
+      <p><strong>Motif :</strong> Vacances</p>
+      <p><strong>Type :</strong> Congé annuel</p>
+      <p><strong>Durée :</strong> 5 jours</p>
+      <p><strong>Période :</strong> 15 - 20 mai 2025</p>
+    </div>
+    <div class="mt-4 flex justify-end space-x-3">
+      <button class="px-3 py-1 bg-green-500 text-white rounded-lg hover:bg-green-600">Approuver</button>
+      <button class="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600">Refuser</button>
+    </div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="bg-white p-6 rounded-xl shadow-lg relative flex flex-col">
+    <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-yellow-100 text-yellow-600 font-semibold">En attente</span>
+    <h3 class="font-bold text-lg">Alexandre Roux</h3>
+    <p class="text-gray-600">RTT — 2 mai 2025</p>
+    <div class="mt-2 space-y-1 text-gray-700">
+      <p><strong>Motif :</strong> Maladie</p>
+      <p><strong>Type :</strong> Congé maladie</p>
+      <p><strong>Durée :</strong> 3 jours</p>
+      <p><strong>Période :</strong> 2 - 5 mai 2025</p>
+    </div>
+    <div class="mt-4 flex justify-end space-x-3">
+      <button class="px-3 py-1 bg-green-500 text-white rounded-lg hover:bg-green-600">Approuver</button>
+      <button class="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600">Refuser</button>
+    </div>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="bg-white p-6 rounded-xl shadow-lg relative flex flex-col">
+    <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-red-100 text-red-600 font-semibold">Refusé</span>
+    <h3 class="font-bold text-lg">Claire Dubois</h3>
+    <p class="text-gray-600">Congé sans solde — 12 au 15 avril 2025</p>
+    <div class="mt-2 space-y-1 text-gray-700">
+      <p><strong>Motif :</strong> Voyage familial</p>
+      <p><strong>Type :</strong> Congés sans solde</p>
+      <p><strong>Durée :</strong> 7 jours</p>
+      <p><strong>Période :</strong> 10 - 16 avril 2025</p>
+    </div>
+    <div class="mt-4 flex justify-end space-x-3">
+      <button class="px-3 py-1 bg-green-500 text-white rounded-lg hover:bg-green-600">Approuver</button>
+      <button class="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600">Refuser</button>
+    </div>
+  </div>
+
+  <!-- Card 7 -->
+  <div class="bg-white p-6 rounded-xl shadow-lg relative flex flex-col">
+    <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-green-100 text-green-600 font-semibold">Approuvé</span>
+    <h3 class="font-bold text-lg">Mohammed Karim</h3>
+    <p class="text-gray-600">Congé exceptionnel — 22 au 24 juin 2025</p>
+    <div class="mt-2 space-y-1 text-gray-700">
+      <p><strong>Motif :</strong> Mariage</p>
+      <p><strong>Type :</strong> Congé exceptionnel</p>
+      <p><strong>Durée :</strong> 2 jours</p>
+      <p><strong>Période :</strong> 22 - 24 juin 2025</p>
+    </div>
+    <div class="mt-4 flex justify-end space-x-3">
+      <button class="px-3 py-1 bg-green-500 text-white rounded-lg hover:bg-green-600">Approuver</button>
+      <button class="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600">Refuser</button>
+    </div>
+  </div>
+
+  <!-- Card 8 -->
+  <div class="bg-white p-6 rounded-xl shadow-lg relative flex flex-col">
+    <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-yellow-100 text-yellow-600 font-semibold">En attente</span>
+    <h3 class="font-bold text-lg">Fatima Zahra</h3>
+    <p class="text-gray-600">Congé maternité — juillet 2025</p>
+    <div class="mt-2 space-y-1 text-gray-700">
+      <p><strong>Motif :</strong> Maternité</p>
+      <p><strong>Type :</strong> Congé maternité</p>
+      <p><strong>Durée :</strong> 90 jours</p>
+      <p><strong>Période :</strong> 1 juillet - 30 septembre 2025</p>
+    </div>
+    <div class="mt-4 flex justify-end space-x-3">
+      <button class="px-3 py-1 bg-green-500 text-white rounded-lg hover:bg-green-600">Approuver</button>
+      <button class="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600">Refuser</button>
+    </div>
+  </div>
+
+  <!-- Card 9 -->
+  <div class="bg-white p-6 rounded-xl shadow-lg relative flex flex-col">
+    <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-red-100 text-red-600 font-semibold">Refusé</span>
+    <h3 class="font-bold text-lg">Jean-Pierre Martin</h3>
+    <p class="text-gray-600">RTT — 5 juillet 2025</p>
+    <div class="mt-2 space-y-1 text-gray-700">
+      <p><strong>Motif :</strong> Urgence familiale</p>
+      <p><strong>Type :</strong> RTT</p>
+      <p><strong>Durée :</strong> 1 jour</p>
+      <p><strong>Période :</strong> 5 juillet 2025</p>
+    </div>
+    <div class="mt-4 flex justify-end space-x-3">
+      <button class="px-3 py-1 bg-green-500 text-white rounded-lg hover:bg-green-600">Approuver</button>
+      <button class="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600">Refuser</button>
+    </div>
+  </div>
+
+</div>
+
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-50 py-8 border-t mt-10">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-gray-600">
+      <div>
+        <h4 class="font-bold mb-2">Service RH</h4>
+        <p>rh@flexidays.com</p>
+        <p>+33 1 23 45 67 89</p>
+        <p>123 Avenue de la République,<br>75011 Paris</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-2">Liens utiles</h4>
+        <p class="hover:text-blue-600 cursor-pointer">Politique des congés</p>
+        <p class="hover:text-blue-600 cursor-pointer">Guide utilisateur</p>
+        <p class="hover:text-blue-600 cursor-pointer">Support technique</p>
+        <p class="hover:text-blue-600 cursor-pointer">Intranet FlexiDays</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-2">FlexiDays</h4>
+        <p>Votre plateforme de gestion des congés simple et efficace. Facilitez vos demandes et suivez vos jours de repos en toute sérénité.</p>
+        <p class="text-xs mt-2">© 2025 FlexiDays. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    lucide.createIcons();
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const menu = document.getElementById('menu');
+    menuBtn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      if (!menu.classList.contains('hidden')) menu.classList.add('animate-slideDown');
+    });
+
+    // Profile toggle desktop
+    const profileBtn = document.getElementById('profile-btn');
+    const profileMenu = document.getElementById('profile-menu');
+    profileBtn.addEventListener('click', () => {
+      profileMenu.classList.toggle('hidden');
+    });
+
+    // Profile toggle mobile
+    const profileBtnMobile = document.getElementById('profile-btn-mobile');
+    const profileMenuMobile = document.getElementById('profile-menu-mobile');
+    profileBtnMobile.addEventListener('click', () => {
+      profileMenuMobile.classList.toggle('hidden');
+    });
+
+    // Close menus when clicking outside
+    window.addEventListener('click', function(e){
+      if (!profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
+        profileMenu.classList.add('hidden');
+      }
+      if (!profileBtnMobile.contains(e.target) && !profileMenuMobile.contains(e.target)) {
+        profileMenuMobile.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>

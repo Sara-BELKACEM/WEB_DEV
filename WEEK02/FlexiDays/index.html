@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlexiDays - Tableau de bord</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    /* Slide down animation for mobile menu */
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-slideDown { animation: slideDown 0.25s ease-out; }
+  </style>
+</head>
+<body class="bg-blue-50 font-sans flex flex-col min-h-screen">
+
+  <header class="fixed w-full z-10 px-4 py-4">
+  <div class="max-w-7xl mx-auto flex justify-between items-center bg-white shadow-lg rounded-xl px-6 py-3 md:py-2 backdrop-blur-md">
+    
+    <!-- Logo -->
+    <div class="flex items-center space-x-3">
+      <i data-lucide="calendar" class="w-6 h-6 text-blue-600"></i>
+      <span class="text-xl font-bold text-blue-700">FlexiDays</span>
+    </div>
+
+    <!-- Desktop Nav as Card -->
+    <nav class="hidden md:flex px-6 py-2 space-x-4">
+      <a href="index.html" class="px-3 py-2 rounded-md bg-blue-100 text-blue-700 font-semibold">Dashboard</a>
+      <a href="mesConges.html" class="px-3 py-2 rounded-md text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition">Mes congés</a>
+      <a href="demandeDeCongé.html" class="px-3 py-2 rounded-md text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition">Nouvelle demande</a>
+      <a href="administration.html" class="px-3 py-2 rounded-md text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition">Administration</a>
+    </nav>
+
+    <!-- Profile (desktop) -->
+    <div class="hidden md:flex items-center relative">
+      <img id="profile-btn" src="https://api.dicebear.com/9.x/bottts/svg?seed=FlexiDays" alt="Profile" 
+           class="w-10 h-10 rounded-full border-2 border-blue-500 shadow-md cursor-pointer hover:scale-105 transition">
+      <!-- Dropdown menu -->
+      <div id="profile-menu" class="hidden absolute right-0 mt-12 w-48 bg-white rounded-xl shadow-lg border border-gray-200 py-2 z-20">
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 transition">Mon profil</a>
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 transition">Paramètres</a>
+        <div class="border-t my-1"></div>
+        <a href="#" class="block px-4 py-2 text-red-500 hover:bg-red-50 transition">Déconnexion</a>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Button + Profile -->
+    <div class="md:hidden flex items-center space-x-3">
+      <button id="menu-btn" class="text-gray-700 text-2xl">
+        <i data-lucide="menu"></i>
+      </button>
+      <img id="profile-btn-mobile" src="https://api.dicebear.com/9.x/bottts/svg?seed=FlexiDays" alt="Profile" 
+           class="w-9 h-9 rounded-full border border-blue-500 shadow-md cursor-pointer">
+      <!-- Mobile Profile Dropdown -->
+      <div id="profile-menu-mobile" class="hidden absolute top-16 right-4 w-40 bg-white rounded-xl shadow-lg border border-gray-200 py-2 z-20">
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 transition">Mon profil</a>
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 transition">Paramètres</a>
+        <div class="border-t my-1"></div>
+        <a href="#" class="block px-4 py-2 text-red-500 hover:bg-red-50 transition">Déconnexion</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="menu" class="hidden md:hidden bg-gray-50 border-t border-gray-200 mt-2 rounded-xl shadow-lg">
+    <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-500 hover:text-white transition">Dashboard</a>
+    <a href="mesConges.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-500 hover:text-white transition">Mes congés</a>
+    <a href="demandeDeCongé.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-500 hover:text-white transition">Nouvelle demande</a>
+    <a href="administration.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-500 hover:text-white transition">Administration</a>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <main class="flex-grow pt-24 max-w-7xl xl:max-w-[1600px] 2xl:max-w-[1920px] mx-auto px-4">
+
+    <!-- Header -->
+    <div class="text-center my-8">
+      <h1 class="text-4xl font-bold text-blue-600">Tableau de bord</h1>
+      <p class="text-gray-600">Bienvenue, gérez vos congés en toute simplicité</p>
+    </div>
+
+    <!-- Statistiques -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10 xl:gap-12 mb-10">
+      <div class="bg-white p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition flex items-center space-x-4">
+        <i data-lucide="clock" class="w-8 h-8 text-yellow-500"></i>
+        <div>
+          <h3 class="font-bold text-lg">En attente</h3>
+          <p class="text-yellow-500 text-2xl font-bold">2 demandes</p>
+          <p class="text-gray-500 text-sm">En cours de traitement</p>
+        </div>
+      </div>
+      <div class="bg-white p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition flex items-center space-x-4">
+        <i data-lucide="check-circle" class="w-8 h-8 text-green-500"></i>
+        <div>
+          <h3 class="font-bold text-lg">Approuvés</h3>
+          <p class="text-green-500 text-2xl font-bold">8 jours</p>
+          <p class="text-gray-500 text-sm">Congés confirmés cette année</p>
+        </div>
+      </div>
+      <div class="bg-white p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition flex items-center space-x-4">
+        <i data-lucide="x-circle" class="w-8 h-8 text-red-500"></i>
+        <div>
+          <h3 class="font-bold text-lg">Refusées</h3>
+          <p class="text-red-500 text-2xl font-bold">0 jours</p>
+          <p class="text-gray-500 text-sm">Congés refusées</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notifications -->
+    <div class="bg-white p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition mb-10">
+      <h3 class="font-bold flex items-center space-x-2 mb-4 text-black text-lg">
+        <i data-lucide="bell" class="w-5 h-5"></i>
+        <span>Notifications importantes</span>
+      </h3>
+      <div class="bg-gray-50 p-4 rounded-lg hover:bg-blue-50 transition flex items-center justify-between">
+        <p><strong>Fermeture exceptionnelle :</strong> L’entreprise sera fermée le 15 août. Pensez à planifier vos congés.</p>
+        <span class="text-gray-500 text-sm">Aujourd’hui</span>
+      </div>
+    </div>
+
+
+
+ <!-- Solde + Prochains congés -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 mb-10">
+      <!-- Solde -->
+      <div class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition">
+        <h3 class="font-bold flex items-center space-x-3 mb-6 text-black text-lg ">
+          <i data-lucide="wallet" class="w-6 h-6 text-blue-600"></i>
+          <span>Solde de congés</span>
+        </h3>
+        <div class="divide-y divide-gray-200 text-lg">
+          <div class="flex justify-between py-3">
+            <span>Congés payés</span>
+            <span class="text-blue-600 font-semibold ">25 jours</span>
+          </div>
+          <div class="flex justify-between py-3">
+            <span>Congés maladie</span>
+            <span class="text-blue-500 font-semibold">8 jours</span>
+          </div>
+          <div class="flex justify-between py-3">
+            <span>RTT</span>
+            <span class="text-blue-400 font-semibold">5 jours</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prochains congés -->
+      <div class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition">
+        <h3 class="font-bold flex items-center space-x-3 mb-6 text-black text-lg">
+          <i data-lucide="plane" class="w-6 h-6 text-blue-600"></i>
+          <span>Prochains congés</span>
+        </h3>
+        <ul class="space-y-4 text-lg">
+          <li class="p-4 bg-gray-50 rounded-xl hover:bg-blue-50 transition">
+            <p class="font-medium">Congés d’été</p>
+            <p class="text-blue-600 font-semibold">15 - 30 juillet 2025</p>
+          </li>
+          <li class="p-4 bg-gray-50 rounded-xl hover:bg-blue-50 transition">
+            <p class="font-medium">Pont de mai</p>
+            <p class="text-blue-600 font-semibold">1 - 2 mai 2025</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Mes congés + Nouvelle demande -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+      <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition flex flex-col justify-between">
+        <h3 class="font-bold mb-2 text-black">Mes congés</h3>
+        <p class="text-gray-600 mb-4">Consultez l’historique de vos demandes de congés</p>
+        <a href="#" class="px-4 py-2 bg-green-500 text-white rounded-xl font-medium flex items-center justify-center space-x-2 hover:bg-green-600 hover:shadow-lg transition">
+          <i data-lucide="list" class="w-5 h-5"></i>
+          <span>Mes congés</span>
+        </a>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition flex flex-col justify-between">
+        <h3 class="font-bold mb-2 text-black">Nouvelle demande</h3>
+        <p class="text-gray-600 mb-4">Créez une nouvelle demande de congé</p>
+        <a href="#" class="px-4 py-2 bg-blue-500 text-white rounded-xl font-medium flex items-center justify-center space-x-2 hover:bg-blue-600 hover:shadow-lg transition">
+          <i data-lucide="plus-circle" class="w-5 h-5"></i>
+          <span>Faire une demande</span>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-50 py-8 border-t mt-10">
+    <div class="max-w-7xl xl:max-w-[1600px] 2xl:max-w-[1920px] mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-gray-600">
+      <div>
+        <h4 class="font-bold mb-2">Service RH</h4>
+        <p>rh@flexidays.com</p>
+        <p>+33 1 23 45 67 89</p>
+        <p>123 Avenue de la République,<br>75011 Paris</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-2">Liens utiles</h4>
+        <p class="hover:text-blue-600 cursor-pointer transition">Politique des congés</p>
+        <p class="hover:text-blue-600 cursor-pointer transition">Guide utilisateur</p>
+        <p class="hover:text-blue-600 cursor-pointer transition">Support technique</p>
+        <p class="hover:text-blue-600 cursor-pointer transition">Intranet FlexiDays</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-2">FlexiDays</h4>
+        <p>Votre plateforme de gestion des congés simple et efficace. Facilitez vos demandes et suivez vos jours de repos en toute sérénité.</p>
+        <p class="text-xs mt-2">© 2025 FlexiDays. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    lucide.createIcons();
+
+    const menuBtn = document.getElementById('menu-btn');
+    const menu = document.getElementById('menu');
+    menuBtn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      if (!menu.classList.contains('hidden')) menu.classList.add('animate-slideDown');
+    });
+
+    // Desktop Profile Dropdown
+    const profileBtn = document.getElementById('profile-btn');
+    const profileMenu = document.getElementById('profile-menu');
+    profileBtn.addEventListener('click', () => {
+      profileMenu.classList.toggle('hidden');
+    });
+
+    // Mobile Profile Dropdown
+    const profileBtnMobile = document.getElementById('profile-btn-mobile');
+    const profileMenuMobile = document.getElementById('profile-menu-mobile');
+    profileBtnMobile.addEventListener('click', () => {
+      profileMenuMobile.classList.toggle('hidden');
+    });
+
+    // Close dropdown when clicking outside
+    window.addEventListener('click', function(e){
+      if (!profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
+        profileMenu.classList.add('hidden');
+      }
+      if (!profileBtnMobile.contains(e.target) && !profileMenuMobile.contains(e.target)) {
+        profileMenuMobile.classList.add('hidden');
+      }
+    });
+  </script>
+
+</body>
+</html>

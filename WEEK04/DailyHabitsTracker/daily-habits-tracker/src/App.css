@@ -1,0 +1,19 @@
+.bg-custom-gradient {
+  background: linear-gradient(to bottom right, 
+    #0C0F00 0%,      /* black */
+    #250A26 37%,      /* purple-950 */
+    #3E054B 59%,      /* fuchsia-500 */
+    #5B4609 100%      /* amber-500 */
+  );
+}
+
+.text-gradient {
+  background: linear-gradient(
+    to right,
+    #C522EB 0%,
+    #FA72FF 50%,
+    #F3B407 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

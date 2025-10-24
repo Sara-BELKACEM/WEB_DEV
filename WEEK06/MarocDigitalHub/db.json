@@ -1,0 +1,11 @@
+{
+  "startups": [
+    { "id": 1, "name": "TourismAI", "sector": "IA", "description": "IA pour personnaliser le tourisme" },
+    { "id": 2, "name": "Fintech Maroc", "sector": "Fintech", "description": "Paiement intelligent marocain" },
+    { "id": 3, "name": "HealthConnect", "sector": "Santé", "description": "Plateforme de télémédecine" }
+  ],
+  "events": [
+    { "id": 1, "title": "AI Summit", "date": "2025-11-10", "place": "Casablanca" },
+    { "id": 2, "title": "Startup Pitch", "date": "2025-12-02", "place": "Rabat Technopark" }
+  ]
+}
