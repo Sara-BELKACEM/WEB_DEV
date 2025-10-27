@@ -20,8 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/welcome', [WelcomeController::class, 'welcome']);
-
-Route::get('/user/{id}', [UserController::class, 'check']);
-
 
