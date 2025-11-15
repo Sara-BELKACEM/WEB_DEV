@@ -8,15 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'description', 'user_id'];
+       protected $fillable = ['title', 'description', 'teacher_id'];
+       
+        public function teacher(){
+            return $this->belongsTo(User::class,"teacher_id");
 
-    public function teacher()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
+        }
 
-    public function students()
-    {
-        return $this->belongsToMany(User::class, 'course_user')->withTimestamps();
-    }
+        public function students(){
+            return $this->belongsToMany(User::class,"enrollments");
+        }
 }

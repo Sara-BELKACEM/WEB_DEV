@@ -9,13 +9,13 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function courses(): void
+    public function up(): void
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->text('description')->nullable();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // teacher
+            $table->foreignId("teacher_id")->constrained("users")->cascadeOnDelete();
             $table->timestamps();
         });
     }
