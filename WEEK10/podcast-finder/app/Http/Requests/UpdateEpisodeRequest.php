@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePodcastRequest extends FormRequest
+class UpdateEpisodeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +22,9 @@ class StorePodcastRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'       => 'required|string|max:255',
-            'description' => 'required|string',
-            'category'    => 'nullable|string|max:100',
-            'image'       => 'nullable|image|max:2048' // max 2MB
+            'title'       => 'sometimes|string|max:255',
+            'description' => 'sometimes|string',
+            'audio'       => 'nullable|mimetypes:audio/mpeg,audio/mp3,audio/mp4|max:15000' 
         ];
     }
 }

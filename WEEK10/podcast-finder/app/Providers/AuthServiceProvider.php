@@ -2,15 +2,13 @@
 
 namespace App\Providers;
 
-// use Illuminate\Support\Facades\Gate;
-
-use App\Models\Episode;
 use App\Models\Podcast;
-use App\Policies\EpisodePolicy;
+use App\Models\Episode;
 use App\Policies\PodcastPolicy;
+use App\Policies\EpisodePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
-class AuthServiceProvider extends AppServiceProvider
+class AuthServiceProvider extends ServiceProvider
 {
     protected $policies = [
         Podcast::class => PodcastPolicy::class,
@@ -19,7 +17,6 @@ class AuthServiceProvider extends AppServiceProvider
 
     public function boot(): void
     {
-        // $this->registerPolicies();
-
+        $this->registerPolicies();
     }
 }

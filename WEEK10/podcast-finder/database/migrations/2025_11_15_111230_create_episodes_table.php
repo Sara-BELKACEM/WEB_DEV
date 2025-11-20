@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('podcast_id');
             $table->string('title');
-            $table->text('description');
-            $table->string('audio');
+            $table->string('description');
+            $table->string('audio')->nullable();
             $table->timestamps();
         });
     }

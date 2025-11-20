@@ -11,7 +11,7 @@ class StoreEpisodeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class StoreEpisodeRequest extends FormRequest
         return [
             'title'       => 'required|string|max:255',
             'description' => 'required|string',
-            'audio'       => 'required|mimetypes:audio/mpeg,audio/mp3,audio/mp4|max:15000'
+            'audio'       => 'nullable|mimetypes:audio/mpeg,audio/mp3,audio/mp4|max:15000' //15MB
         ];
     }
 }

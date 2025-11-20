@@ -5,8 +5,9 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Podcast;
-use App\Models\Episode;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class EpisodeTest extends TestCase
 {
@@ -14,17 +15,21 @@ class EpisodeTest extends TestCase
 
     public function test_host_can_add_episode()
     {
-        $user = User::factory()->create(['role'=>'host']);
-        $podcast = Podcast::factory()->create(['user_id'=>$user->id]);
+        Storage::fake('public'); 
+
+        $user = User::factory()->create(['role' => 'host']);
+        $podcast = Podcast::factory()->create(['user_id' => $user->id]);
         $token = $user->createToken('api')->plainTextToken;
 
-        $response = $this->post("/api/podcasts/$podcast->id/episodes", [
-            'title'=>'Episode 1',
-            'description'=>'desc',
+        $response = $this->postJson("/api/podcasts/{$podcast->id}/episodes", [
+            'title' => 'Episode 1',
+            'description' => 'desc',
+            'audio' => UploadedFile::fake()->create('episode1.mp3', 5000, 'audio/mpeg')
         ], [
-            'Authorization'=>"Bearer $token"
+            'Authorization' => "Bearer $token",
+            'Accept' => 'application/json'
         ]);
 
-        $response->assertStatus(200);
+        $response->assertStatus(201);
     }
 }
