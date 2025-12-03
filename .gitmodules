@@ -1,0 +1,6 @@
+[submodule "WEEK11/MyTiq"]
+	path = WEEK11/MyTiq
+	url = https://github.com/Chaimaa101/MyTiq.git
+[submodule "Projet-Fil-Rouge"]
+	path = Projet-Fil-Rouge
+	url = https://github.com/Sara-BELKACEM/Projet-Fil-Rouge.git
