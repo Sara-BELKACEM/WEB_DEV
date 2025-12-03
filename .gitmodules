@@ -1,3 +1,6 @@
 [submodule "WEEK11/MyTiq-plateforme-de-billetterie-evenementielle"]
 	path = WEEK11/MyTiq-plateforme-de-billetterie-evenementielle
 	url = https://github.com/Chaimaa101/MyTiq-plateforme-de-billetterie-evenementielle
+[submodule "Projet-Fil-Rouge"]
+	path = Projet-Fil-Rouge
+	url = https://github.com/Sara-BELKACEM/Projet-Fil-Rouge.git
