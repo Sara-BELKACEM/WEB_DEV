@@ -1,0 +1,50 @@
+# Timyo — Réservation de Rendez-vous
+
+**Résumé :** Application web Full-Stack (Laravel + React) pour gérer des rendez-vous avec rôles User/Admin et authentification sécurisée via Laravel Sanctum.
+
+## Fonctionnalités
+
+* **User :** créer, voir et annuler ses rendez-vous.
+* **Admin :** voir tous les rendez-vous, changer leur statut, gérer les utilisateurs.
+
+## Stack
+
+* Backend : Laravel, MySQL, Sanctum
+* Frontend : React, Vite, Tailwind, Axios
+
+## Installation
+
+### Backend
+
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate --seed
+php artisan serve
+```
+
+### Frontend
+
+```bash
+npm install
+npm run dev
+```
+
+## Base de Données
+
+* **User** (id, name, email, password, role)
+* **Appointment** (id, user_id, date, time, status)
+* Relation : User hasMany Appointment
+
+## Pages Frontend
+
+* Login / Register
+* User Dashboard
+* Admin Dashboard
+* Create Appointment
+
+## Tests
+
+* Backend : PHPUnit
+* Frontend : Jest + React Testing Library
