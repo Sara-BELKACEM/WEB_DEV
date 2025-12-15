@@ -1,51 +1,62 @@
-Timyo — Réservation de Rendez-vous
+# 🗓️ Timyo — Réservation de Rendez-vous
 
-Timyo est une application web Full‑Stack (Laravel + React) pour gérer des rendez‑vous avec rôles User / Admin et authentification sécurisée via Laravel Sanctum.
+**Timyo** est une application web **Full‑Stack** (Laravel + React) pour gérer des rendez‑vous avec rôles **User / Admin** et authentification sécurisée via **Laravel Sanctum**.
 
-Fonctionnalités
+---
 
-User : créer, consulter et annuler ses rendez-vous.
+## ✨ Fonctionnalités
 
-Admin : gérer tous les rendez-vous, changer leur statut et gérer les utilisateurs.
+* **👤 User :** créer, consulter et annuler ses rendez-vous.
+* **🛠️ Admin :** gérer tous les rendez-vous, changer leur statut et gérer les utilisateurs.
 
-Stack Technique
+---
 
-Backend : Laravel, MySQL, Sanctum
+## 💻 Stack Technique
 
-Frontend : React, Vite, Tailwind, Axios
+* **Backend :** Laravel, MySQL, Sanctum
+* **Frontend :** React, Vite, Tailwind, Axios
 
-Installation Rapide
-Backend
+---
+
+## ⚡ Installation Rapide
+
+### Backend
+
+```bash
 composer install
 cp .env.example .env
 php artisan key:generate
 php artisan migrate --seed
 php artisan serve
+```
 
-Frontend
+### Frontend
+
+```bash
 npm install
 npm run dev
+```
 
-Base de Données
+---
 
-User → id, name, email, password, role
+## 🗄️ Base de Données
 
-Appointment → id, user_id, date, time, status
+* **User** → id, name, email, password, role
+* **Appointment** → id, user_id, date, time, status
+* Relation : `User hasMany Appointment`
 
-Relation : User hasMany Appointment
+---
 
-Pages Principales
+## 🖥️ Pages Principales
 
-Login / Register
+* Login / Register
+* User Dashboard
+* Admin Dashboard
+* Create Appointment
 
-User Dashboard
+---
 
-Admin Dashboard
+## ✅ Tests
 
-Create Appointment
-
-Tests
-
-Backend : PHPUnit
-
-Frontend : Jest + React Testing Library
+* Backend : PHPUnit
+* Frontend : Jest + React Testing Library
