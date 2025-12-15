@@ -1,0 +1,28 @@
+<?php
+
+namespace Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Appointment>
+ */
+class AppointmentFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition()
+    {
+        return [
+            'user_id' => User::factory(),
+            'date' => $this->faker->dateTimeBetween('+1 days', '+30 days')->format('Y-m-d'),
+            'time' => $this->faker->time('H:i'),
+            'status' => 'pending',
+            'notes' => $this->faker->sentence()
+        ];
+    }
+}
